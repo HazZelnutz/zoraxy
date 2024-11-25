@@ -21,6 +21,7 @@ import (
 
 	"github.com/go-acme/lego/v4/certcrypto"
 	"github.com/go-acme/lego/v4/certificate"
+	"github.com/go-acme/lego/v4/challenge/dns01"
 	"github.com/go-acme/lego/v4/challenge/http01"
 	"github.com/go-acme/lego/v4/lego"
 	"github.com/go-acme/lego/v4/registration"
@@ -195,7 +196,8 @@ func (a *ACMEHandler) ObtainCert(domains []string, certificateName string, email
 			return false, err
 		}
 
-		err = client.Challenge.SetDNS01Provider(provider)
+		a.Logf("Using 1.1.1.1 and 1.0.0.1 for DNS01.", nil)
+		err = client.Challenge.SetDNS01Provider(provider, dns01.AddRecursiveNameservers([]string{"1.1.1.1", "1.0.0.1"}))
 		if err != nil {
 			a.Logf("Failed to resolve DNS01 Provider", err)
 			return false, err

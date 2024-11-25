@@ -4,6 +4,11 @@
 
 A general purpose HTTP reverse proxy and forwarding tool. Now written in Go!
 
+## Note!
+This is a fork of the official [Zoraxy](https://github.com/tobychui/zoraxy) project, with a patch to use Cloudflares DNS for the DNS01 challenge.
+See this [issue](https://github.com/tobychui/zoraxy/issues/319) of the original Project.
+Nothing more. Nothing less.
+
 ### Features
 
 - Simple to use interface with detail in-system instructions
